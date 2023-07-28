@@ -1,8 +1,10 @@
-import { formEl } from './refs';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/style.css';
+import { uid } from "uid";
+import { formEl } from "./refs";
+import { setToLocal } from "./api";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./css/style.css";
 
-formEl.addEventListener('submit', onSubmit);
+formEl.addEventListener("submit", onSubmit);
 
 function onSubmit(event) {
   event.preventDefault();
@@ -10,5 +12,15 @@ function onSubmit(event) {
   if (!inputValue) {
     return;
   }
+  const data = factory(inputValue)
+  setToLocal(data);
   event.target.reset();
+}
+
+function factory(value){
+  return {
+    value,
+    id: uid(),
+    checked: false,
+  }
 }
