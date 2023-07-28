@@ -3,7 +3,7 @@ const STORAGE_KEY = "tu-do-list";
 function setToLocal(data) {
   const arr = getStatus();
   arr.push(data);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+  saveNewData(arr)
 }
 function getStatus() {
   try {
@@ -14,4 +14,9 @@ function getStatus() {
   }
 }
 
-export { setToLocal, getStatus };
+function saveNewData(arr) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+}
+
+export { setToLocal, getStatus, saveNewData };
+
