@@ -14,4 +14,4 @@ function getStatus() {
   }
 }
 
-export { setToLocal };
+export { setToLocal, getStatus };
