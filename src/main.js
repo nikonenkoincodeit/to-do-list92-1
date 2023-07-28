@@ -58,3 +58,19 @@ function onDeleteBtnClick(evt) {
 
   saveNewData(filteredArr);
 }
+
+listEl.addEventListener('click', updateStatus);
+function updateStatus(evt) {
+    if (!evt.target.classList.contains("text")) return;
+    
+    const parentEl = evt.target.closest(".item");
+    const idToFind = parentEl.dataset.id;
+    const statusEl = parentEl.classList.toggle("checked");
+    
+    const tempArray = getStatus();
+    const task = tempArray.find(({ id }) => id === idToFind);
+    task.checked = statusEl;
+
+    saveNewData(tempArray);
+    
+}
