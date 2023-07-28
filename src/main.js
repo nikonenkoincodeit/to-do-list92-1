@@ -1,6 +1,7 @@
 import { uid } from "uid";
 import { formEl } from "./refs";
 import { setToLocal } from "./api";
+import { createMarkup } from "./markup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/style.css";
 
@@ -13,6 +14,7 @@ function onSubmit(event) {
     return;
   }
   const data = factory(inputValue)
+  console.log(createMarkup([data]))
   setToLocal(data);
   event.target.reset();
 }
