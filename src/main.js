@@ -1,9 +1,9 @@
 import { uid } from "uid";
 import { formEl } from "./refs";
+import { createMarkup } from "./markup";
 import { toLocalStorage } from "./api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/style.css";
-
 formEl.addEventListener("submit", formSubmit);
 
 function formSubmit(e) {
@@ -14,6 +14,8 @@ function formSubmit(e) {
   }
   const objData = createObjData(value);
   toLocalStorage(objData);
+  const markup = createMarkup([objData]);
+  console.log(markup);
   e.currentTarget.reset();
 }
 
