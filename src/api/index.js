@@ -2,7 +2,7 @@ const STORAGE_KEY = "to-do-list";
 export function toLocalStorage(value) {
   const arrayFoToDoList = getLocalData();
   arrayFoToDoList.push(value);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(arrayFoToDoList));
+  savedData(arrayFoToDoList);
 }
 export function getLocalData() {
   try {
@@ -11,4 +11,8 @@ export function getLocalData() {
   } catch (err) {
     console.log(err.message);
   }
+}
+
+export function savedData(params) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(params));
 }
