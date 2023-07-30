@@ -4,7 +4,7 @@ export function toLocalStorage(value) {
   arrayFoToDoList.push(value);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(arrayFoToDoList));
 }
-function getLocalData() {
+export function getLocalData() {
   try {
     const data = localStorage.getItem(STORAGE_KEY);
     return data ? JSON.parse(data) : [];
