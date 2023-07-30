@@ -1,4 +1,6 @@
+import { uid } from "uid";
 import { formEl } from "./refs";
+import { toLocalStorage } from "./api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/style.css";
 
@@ -10,6 +12,11 @@ function formSubmit(e) {
   if (!value) {
     return;
   }
-  console.log(value);
+  const objData = createObjData(value);
+  toLocalStorage(objData);
   e.currentTarget.reset();
+}
+
+function createObjData(value) {
+  return { value, id: uid(5), checked: false };
 }
